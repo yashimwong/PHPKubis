@@ -8,7 +8,7 @@ class Controller {
 	// Load Model
 	public function model ($model){
 		// Require model files
-		require_once '../app/models' . $model . '.php';
+		require_once '../app/models/' . $model . '.php';
 
 		// Instantiate model
 		return new $model;
