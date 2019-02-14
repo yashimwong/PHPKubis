@@ -17,6 +17,9 @@ define('URL_ROOT', 'http://localhost/PHPKubis');
 // Site Name
 define('SITE_NAME', 'PHPKubis');
 
+// App Version
+define('APP_VERSION', '1.0.0');
+
 
 
 
