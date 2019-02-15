@@ -22,8 +22,6 @@ class Controller {
 		} else {
 			die('View does not exist');
 		}
-
-
 	}
 
 }
