@@ -6,21 +6,22 @@
 			<h2>Login</h2>
 			<p>Please enter your credentials to login.</p>
 
-			<form action="<?php echo URL_ROOT; ?>/users/register" method="post">
+			<form action="<?php echo URL_ROOT; ?>/users/login" method="post">
 
 				<div class="form-group">
 					<label for="email">Email: </label>
 					<input type="email" name="email" class="form-control form-control-lg 
-					<?php echo (!empty($data['email_error'])) ? 'is_invalid' : ''; ?>" 
-					value="<?php echo $data['email_error']; ?>">
+					<?php echo (!empty($data['email_error'])) ? 'is-invalid' : ''; ?>" 
+					value="<?php echo $data['email']; ?>">
 					<span class="invalid-feedback"><?php echo $data['email_error']; ?></span>
 				</div>
 
 				<div class="form-group">
-					<label for="username">Password: </label>
+					<label for="password">Password: </label>
 					<input type="password" name="password" class="form-control form-control-lg 
-					<?php echo (!empty($data['password_error'])) ? 'is_invalid' : ''; ?>" 
-					value="<?php echo $data['password_error']; ?>">
+					<?php echo (!empty($data['password_error'])) ? 'is-invalid' : ''; ?>" 
+					value="<?php echo $data['password']; ?>">
+					<span class="invalid-feedback"><?php echo $data['password_error']; ?></span>
 				</div>
 
 				<div class="row">
