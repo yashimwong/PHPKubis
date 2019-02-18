@@ -3,6 +3,7 @@
 <div class="row">
 	<div class="col-md-6 mx-auto">
 		<div class="card card-body bg-light mt-5">
+			<?php notify('register_success'); ?>
 			<h2>Login</h2>
 			<p>Please enter your credentials to login.</p>
 
