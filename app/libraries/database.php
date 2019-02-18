@@ -29,7 +29,7 @@ class Database {
 
 		// Create PDO Instance
 		try {
-			$this->dbh = new PDO($dsn, $this->db_user, $this->db_pass, $options);
+			$this->db_handler = new PDO($dsn, $this->db_user, $this->db_pass, $options);
 		} catch(PDOException $error) {
 			$this->error = $error->getMessage();
 			echo $this->error;
@@ -39,7 +39,7 @@ class Database {
 
 	// Prepare Statement with query
 	public function query($sql){
-		$this->statement = $this->dbh->prepare($sql);
+		$this->statement = $this->db_handler->prepare($sql);
 	}
 
 	// Bind Values
