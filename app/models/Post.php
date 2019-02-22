@@ -26,6 +26,63 @@
 			return $results;  
 		}
 
+
+		public function addPost($data) {
+			$new_user_query = 'INSERT INTO posts (title, user_id, body) VALUES(:title, :user_id, :body)';
+			$this->db->query($new_user_query);
+			// Bind Values
+			$this->db->bind(':title', $data['title']);
+			$this->db->bind(':user_id', $data['user_id']);
+			$this->db->bind(':body', $data['body']);
+
+			if($this->db->execute()){
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+
+		public function getPostById($id) {
+			$getPost_query = 'SELECT * FROM posts WHERE id = :id';
+			$this->db->query($getPost_query);
+			$this->db->bind(':id', $id);
+
+			$row = $this->db->single();
+
+			return $row;
+
+		}
+
+		public function updatePost($data) {
+			$update_query = 'UPDATE posts SET title = :title, body = :body WHERE id = :id';
+			$this->db->query($update_query);
+			// Bind Values
+			$this->db->bind(':title', $data['title']);
+			$this->db->bind(':body', $data['body']);
+			$this->db->bind(':id', $data['id']);
+
+			if($this->db->execute()){
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+
+		public function deletePost($id) {
+			$delete_query = 'DELETE FROM posts WHERE id = :id';
+			$this->db->query($delete_query);
+			// Bind Values
+			$this->db->bind(':id', $id);
+
+			if($this->db->execute()){
+				return true;
+			} else {
+				return false;
+			}
+		}
+
 	}
 
 

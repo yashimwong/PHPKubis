@@ -6,6 +6,11 @@
 		}
 
 		public function index(){
+			if(isLoggedIn()){
+				redirect('posts');
+			}
+
+
 			$data = [
 			'title' => 'Welcome',
 			'description' => 'This is the PHPKubis Framework. Please refer to the documentations on how to use it.'

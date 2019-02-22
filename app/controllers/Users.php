@@ -66,7 +66,7 @@
 
 					// Register User
 					if($this->userModel->register($data)) {
-						notify('register_success', 'Your account have been successfully registered.`');
+						notify('register_success', 'Your account have been successfully registered.');
 						redirect('users/login');
 
 					} else {
