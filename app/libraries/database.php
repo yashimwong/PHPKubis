@@ -14,6 +14,7 @@ class Database {
 	private $db_user = DB_USER;
 	private $db_pass = DB_PASS;
 	private $db_name = DB_NAME;
+	private $charset = DB_CHARSET;
 
 	private $db_handler;
 	private $statement;
@@ -21,10 +22,11 @@ class Database {
 
 	public function __construct(){
 		//Set DSN
-		$dsn = 'mysql:host='. $this->host .';dbname='. $this->db_name;
+		$dsn = 'mysql:host='. $this->host .';dbname='. $this->db_name .';charset='. $this->charset;
 		$options = [
 			PDO::ATTR_PERSISTENT => true,
-			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+			PDO::ATTR_EMULATE_PREPARES => false,
 		];
 
 		// Create PDO Instance
