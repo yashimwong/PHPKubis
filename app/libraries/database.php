@@ -65,6 +65,13 @@ class Database {
 
 		$this->statement->bindValue($param, $value, $type);
 	}
+	
+	// Bind All Values
+	public function bindAll($bindArray){
+		foreach($bindArray as $key => $value){
+			$this->bind($key, $value);
+		}
+	}
 
 	// Execute the prepared statement
 	public function execute(){
