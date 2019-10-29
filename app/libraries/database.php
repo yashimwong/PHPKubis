@@ -15,6 +15,7 @@ class Database {
 	private $db_pass = DB_PASS;
 	private $db_name = DB_NAME;
 	private $charset = DB_CHARSET;
+	protected $fetch_mode = PDO::FETCH_ASSOC;
 
 	private $db_handler;
 	private $statement;
@@ -68,6 +69,28 @@ class Database {
 		$this->statement->bindValue($param, $value, $type);
 	}
 	
+	// Set Fetch Mode. By Default: Fetch Mode by Assoc
+	public function fetchMode($type){
+		switch($type){
+			case 'object':
+				$this->fetch_mode = PDO::FETCH_OBJ;
+			break;
+
+			case 'associative':
+				$this->fetch_mode = PDO::FETCH_ASSOC;
+			break;
+
+			case 'both':
+				$this->fetch_mode = PDO::FETCH_BOTH;
+			break;
+
+			case 'number':
+				$this->fetch_mode = PDO::FETCH_NUM;
+			break;
+		}
+
+	}
+	
 	// Bind All Values
 	public function bindAll($bindArray){
 		foreach($bindArray as $key => $value){
@@ -80,16 +103,16 @@ class Database {
 		return $this->statement->execute();
 	}
 
-	// Get result set as array of objects
+	// Get result
 	public function resultSet(){
 		$this->execute();
-		return $this->statement->fetchAll(PDO::FETCH_OBJ);
+		return $this->statement->fetchAll($this->fetch_mode);
 	}
 
-	// Get single record as object
+	// Get single record
 	public function single(){
 		$this->execute();
-		return $this->statement->fetch(PDO::FETCH_OBJ);
+		return $this->statement->fetch($this->fetch_mode);
 	}
 
 	// Get row count
